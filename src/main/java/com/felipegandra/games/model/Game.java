@@ -1,7 +1,6 @@
 package com.felipegandra.games.model;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
 
 @Entity
@@ -28,7 +27,10 @@ public class Game {
     private Double valor;
     private String produtora;
     private Boolean finalizado;
-    private String categoria;
+
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
 
     public Long getId() { return this.id; }
@@ -55,8 +57,8 @@ public class Game {
     public void setFinalizado(Boolean finalizado) { this.finalizado = finalizado; }
 
 
-    public String getCategoria() { return categoria; }
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public Categoria getCategoria() { return categoria; }
+    public void setCategoria(Categoria categoria) { this.categoria = categoria; }
 
 
     @Override
@@ -68,7 +70,7 @@ public class Game {
                 ", valor=" + valor +
                 ", produtora='" + produtora + '\'' +
                 ", finalizado=" + finalizado +
-                ", categoria='" + categoria + '\'' +
+                ", categoria='" + categoria.getNomeCategoria() + '\'' +
                 '}';
     }
 

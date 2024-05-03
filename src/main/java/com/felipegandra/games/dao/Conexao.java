@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 
 public class Conexao {
 
-    public static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("games");
+    private static final EntityManagerFactory EMF = Persistence.createEntityManagerFactory("games");
 
     public static EntityManager getEntityManager(){
         return EMF.createEntityManager();
